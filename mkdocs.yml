@@ -3,7 +3,6 @@ site_url: !ENV [SITE_URL, CF_PAGES_URL, 'https://recipes.demosjarco.dev']
 site_author: DemosJarco
 repo_name: demosjarco/recipes
 repo_url: https://github.com/demosjarco/recipes
-edit_uri: edit/main/recipes/
 docs_dir: recipes
 theme:
   name: material
