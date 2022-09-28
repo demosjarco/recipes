@@ -24,6 +24,9 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 permissions:
   contents: read
 
+env:
+  NODE_ENV: ${{ (inputs.environment || 'production') }}
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -59,7 +62,7 @@ jobs:
           node-version: lts/*
           check-latest: true
           cache: 'npm'
-      - run: npm ci --production=false
+      - run: npm ci --production=${{ (inputs.environment || 'production') == 'production' && 'true' || 'false' }}
       - name: MkDocs cache
         uses: actions/cache@v3
         with:
