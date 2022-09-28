@@ -15,7 +15,7 @@ jobs:
       - uses: step-security/harden-runner@v1
         with:
             egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
-      - uses: actions/checkout@v3.0.2
+      - uses: actions/checkout@v3
       - name: Rustup Cache
         uses: actions/cache@v3
         with:
