@@ -9,7 +9,7 @@
 			"type": "python",
 			"request": "launch",
 			"module": "mkdocs",
-			"args": ["serve"],
+			"args": ["build"],
 			"justMyCode": true
 		}
 	]
