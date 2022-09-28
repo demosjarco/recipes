@@ -294,6 +294,9 @@ dist
 # macOS
 .DS_Store
 
+# Compiled less files
+recipes/stylesheets/**.css
+
 # Temp downloaded files
 CookCLI_*.*.*_linux_amd64.zip
 cook
