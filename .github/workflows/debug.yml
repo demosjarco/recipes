@@ -51,7 +51,7 @@ jobs:
         with:
           key: ${{ github.ref }}
           path: .cache
-      - run: mkdocs build
+      - run: mkdocs build --strict
         env:
           CI_SYSTEM_OVERRIDE: 0
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
