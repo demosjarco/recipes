@@ -1,4 +1,5 @@
 name: Generate Docs
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 on:
   push:
@@ -19,7 +20,6 @@ on:
         type: environment
         default: development
         required: true
-concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 permissions:
   contents: read
