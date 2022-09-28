@@ -19,7 +19,7 @@ on:
         type: environment
         default: debug
         required: true
-concurrency: ${{ github.workflow }}-${{ github.ref }}-${{ inputs.environment || 'production' }}
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 permissions:
   contents: read
