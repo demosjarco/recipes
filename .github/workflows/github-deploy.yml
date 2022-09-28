@@ -62,7 +62,7 @@ jobs:
           node-version: lts/*
           check-latest: true
           cache: 'npm'
-      - run: npm ci
+      - run: npm ci --fund=false
       - name: MkDocs cache
         uses: actions/cache@v3
         with:
