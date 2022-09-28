@@ -62,7 +62,7 @@ jobs:
           node-version: lts/*
           check-latest: true
           cache: 'npm'
-      - run: npm ci --production=${{ (inputs.environment || 'production') == 'production' && 'true' || 'false' }}
+      - run: npm ci
       - name: MkDocs cache
         uses: actions/cache@v3
         with:
@@ -71,7 +71,6 @@ jobs:
       # - run: mkdocs gh-deploy --force
       #   env:
       #       # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #       NODE_ENV: production
       #       # ENABLED_GIT_REVISION_DATE: true
       #       # SITE_URL: https://demosjarco.github.io/recipes/
       #       # RO_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=ro&hl=ro&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
