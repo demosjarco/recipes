@@ -12,10 +12,12 @@ on:
     inputs:
       useMkDocsCache:
         description: 'MkDocs use caching'
+        default: false
         required: true
         type: boolean
       environment:
         type: environment
+        default: debug
         required: true
 concurrency: ${{ github.workflow }}-${{ github.ref }}-${{ inputs.environment || 'production' }}
 
