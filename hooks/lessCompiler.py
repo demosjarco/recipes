@@ -11,6 +11,7 @@ class LessCompiler:
 		cssFileText = lesscpy.compile(StringIO(lessFileText), tabs=True, spaces=False)
 		with open(cssFilePath, 'w') as cssFile:
 			cssFile.write(cssFileText)
+		print(f"Compiled {lessFilePath} to {cssFilePath}")
 
 # Run `on_config` because it runs before `get_files`
 def on_config(config:Config):
