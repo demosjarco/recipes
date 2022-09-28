@@ -9,6 +9,14 @@ on:
       - ".vscode/**"
       - "_headers"
   workflow_dispatch:
+    inputs:
+      useMkDocsCache:
+        description: 'MkDocs use caching'
+        required: true
+        type: boolean
+      environment:
+        type: environment
+        required: true
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 permissions:
@@ -54,11 +62,12 @@ jobs:
         with:
           key: ${{ github.ref }}
           path: .cache
-      - run: python3 setup.py
+      - run: env
+      - run: mkdocs gh-deploy --force
         env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             NODE_ENV: production
-            ENABLED_GIT_REVISION_DATE: true
-            SITE_URL: https://demosjarco.github.io/recipes/
-            RO_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=ro&hl=ro&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
-            ES_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=es&hl=es&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
+            # ENABLED_GIT_REVISION_DATE: true
+            # SITE_URL: https://demosjarco.github.io/recipes/
+            # RO_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=ro&hl=ro&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
+            # ES_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=es&hl=es&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
