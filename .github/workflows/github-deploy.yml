@@ -17,7 +17,7 @@ on:
         type: boolean
       environment:
         type: environment
-        default: debug
+        default: development
         required: true
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
