@@ -1,3 +1,4 @@
+from mkdocs.config.base import Config
 from pathlib import Path
 from io import StringIO
 import lesscpy
@@ -12,7 +13,7 @@ class LessCompiler:
 			cssFile.write(cssFileText)
 
 # Run `on_config` because it runs before `get_files`
-def on_config(config):
+def on_config(config:Config):
 	for extraCssFilePath in config.extra_css:
 		cssFilePath = Path("recipes").joinpath(Path(extraCssFilePath))
 		lessFilePath = cssFilePath.with_suffix('.less')
