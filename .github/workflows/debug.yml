@@ -7,28 +7,19 @@ on:
         description: 'MkDocs use caching'
         required: true
         type: boolean
-      environment:
-        type: environment
-        default: development
-        required: true
 
 permissions:
   contents: read
 
-env:
-  NODE_ENV: ${{ (inputs.environment || 'production') }}
-
 jobs:
   generate:
     runs-on: ubuntu-latest
-    environment: production
     strategy:
       matrix:
         # Python 3.7 is latest supported on CF, test all versions from that to latest beta
         py: ['3.7', '3.8', '3.9', '3.10', '3.11.0-alpha - 3.11.0']
         # cook docs still build for 1.18 (https://github.com/nicholaswilde/cook-docs/blob/main/go.mod#L3), test all through latest version 
         go: ['1.18', '1.19']
-        node: ['lts/*', 'latest']
     steps:
       - uses: step-security/harden-runner@v1
         with:
@@ -54,13 +45,6 @@ jobs:
           check-latest: true
           # Must be disabled when no `go.sum`
           # cache: true
-      - uses: actions/setup-node@v3
-        id: sn
-        with:
-          node-version: ${{ matrix.node }}
-          check-latest: true
-          cache: 'npm'
-      - run: npm ci
       - name: MkDocs cache
         if: ${{ inputs.useMkDocsCache }}
         uses: actions/cache@v3
@@ -76,14 +60,14 @@ jobs:
           SITE_URL: https://demosjarco.github.io/recipes/
           RO_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=ro&hl=ro&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
           ES_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=es&hl=es&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
-      - run: find . -type f -exec sha256sum {} \; > 'py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}_node${{ steps.sn.outputs.node-version }}_hashes.sha256'
+      - run: find . -type f -exec sha256sum {} \; > 'py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}_hashes.sha256'
       - uses: actions/upload-artifact@v3
         with:
-          name: py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}_node${{ steps.sn.outputs.node-version }}_hashes.sha256
-          path: '${{ github.workspace }}/py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}_node${{ steps.sn.outputs.node-version }}_hashes.sha256'
+          name: py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}_hashes.sha256
+          path: '${{ github.workspace }}/py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}_hashes.sha256'
           if-no-files-found: error
       - uses: actions/upload-artifact@v3
         with:
-          name: py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}_node${{ steps.sn.outputs.node-version }}
+          name: py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}
           path: ${{ github.workspace }}
           if-no-files-found: error

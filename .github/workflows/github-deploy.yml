@@ -14,9 +14,6 @@ on:
 permissions:
   contents: read
 
-env:
-  NODE_ENV: production
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -47,12 +44,6 @@ jobs:
           check-latest: true
           # Must be disabled when no `go.sum`
           # cache: true
-      - uses: actions/setup-node@v3
-        with:
-          node-version: lts/*
-          check-latest: true
-          cache: 'npm'
-      - run: npm ci --fund=false
       - name: MkDocs cache
         uses: actions/cache@v3
         with:
