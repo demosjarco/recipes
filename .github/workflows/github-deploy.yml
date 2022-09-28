@@ -10,27 +10,17 @@ on:
       - ".vscode/**"
       - "_headers"
   workflow_dispatch:
-    inputs:
-      useMkDocsCache:
-        description: 'MkDocs use caching'
-        default: false
-        required: true
-        type: boolean
-      environment:
-        type: environment
-        default: development
-        required: true
 
 permissions:
   contents: read
 
 env:
-  NODE_ENV: ${{ (inputs.environment || 'production') }}
+  NODE_ENV: production
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment || 'production' }}
+    environment: production
     permissions:
       contents: write
       pages: write
@@ -68,10 +58,10 @@ jobs:
         with:
           key: ${{ github.ref }}
           path: .cache
-      # - run: mkdocs gh-deploy --force
-      #   env:
-      #       # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #       # ENABLED_GIT_REVISION_DATE: true
-      #       # SITE_URL: https://demosjarco.github.io/recipes/
-      #       # RO_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=ro&hl=ro&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
-      #       # ES_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=es&hl=es&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
+      - run: mkdocs gh-deploy --force
+        env:
+        #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            ENABLED_GIT_REVISION_DATE: true
+            SITE_URL: https://demosjarco.github.io/recipes/
+            RO_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=ro&hl=ro&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
+            ES_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=es&hl=es&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
