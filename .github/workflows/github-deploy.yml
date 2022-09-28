@@ -63,6 +63,7 @@ jobs:
         with:
           key: ${{ github.ref }}
           path: .cache
+      - run: echo "$environment"
       - run: env
       # - run: mkdocs gh-deploy --force
       #   env:
