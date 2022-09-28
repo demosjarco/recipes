@@ -1,3 +1,20 @@
+from pathlib import Path
+from io import StringIO
+import lesscpy
+
+class LessCompiler:
+	def compileCSS(cssFilePath:Path, lessFilePath:Path) -> None:
+		with open(lessFilePath, 'r') as lessFile:
+			lessFileText = lessFile.read()
+		
+		cssFileText = lesscpy.compile(StringIO(lessFileText), tabs=True, spaces=False)
+		with open(cssFilePath, 'w') as cssFile:
+			cssFile.write(cssFileText)
+
 # Run `on_config` because it runs before `get_files`
 def on_config(config):
-	pass
+	for extraCssFilePath in config.extra_css:
+		cssFilePath = Path("recipes").joinpath(Path(extraCssFilePath))
+		lessFilePath = cssFilePath.with_suffix('.less')
+
+		LessCompiler.compileCSS(cssFilePath, lessFilePath)
