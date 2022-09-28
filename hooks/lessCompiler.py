@@ -17,4 +17,5 @@ def on_config(config):
 		cssFilePath = Path("recipes").joinpath(Path(extraCssFilePath))
 		lessFilePath = cssFilePath.with_suffix('.less')
 
-		LessCompiler.compileCSS(cssFilePath, lessFilePath)
+		if lessFilePath.exists():
+			LessCompiler.compileCSS(cssFilePath, lessFilePath)
