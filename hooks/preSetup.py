@@ -1,12 +1,12 @@
 from sys import platform
-from os import system, getenv
+from os import system, environ, geteuid, getenv
 
 class AptInstall:
 	def __init__(self) -> None:
 		system(f'{self.isSudo() == True and "" or "sudo"} apt update')
 
 	def isSudo(self) -> bool:
-		if not os.environ.get("SUDO_UID") and os.geteuid() != 0:
+		if not environ.get("SUDO_UID") and geteuid() != 0:
 			return False
 		else:
 			return True
