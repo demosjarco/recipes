@@ -10,6 +10,7 @@
 			"request": "launch",
 			"module": "mkdocs",
 			"args": ["build", "--clean", "--strict"],
+			"env": {},
 			"justMyCode": true
 		}
 	]
