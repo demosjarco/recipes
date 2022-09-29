@@ -26,11 +26,11 @@ class CookDocsImages:
 			# 
 			# Keep base folder perms of 755
 			os.makedirs(newPath.parent, 0o755)
-			print("Created", newPath.parent)
+			print("Created", newPath.parent, flush=True)
 		# Check if image exists
 		if not os.path.isfile(newPath):
 			shutil.copyfile(originalPath, newPath)
-			print("Moved", originalPath, "to", newPath)
+			print("Moved", originalPath, "to", newPath, flush=True)
 
 def on_files(files:Files, config:Config) -> Files:
 	newFiles = []
