@@ -4,7 +4,6 @@ from .ciSystem import CiSystem
 from .preSetup import PreSetup
 from .cookLang import CookLang
 from .cookDocs import CookDocs
-from .cookDocsImages import CookDocsImages
 import shutil
 
 class Docs:
@@ -13,7 +12,6 @@ class Docs:
 		# self.systemDebug()
 		CookLang()
 		CookDocs()
-		CookDocsImages()
 		# self.ciTweaks()
 		self.generate()
 		self.siteExtraConfig()
