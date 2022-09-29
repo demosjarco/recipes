@@ -1,6 +1,6 @@
 from mkdocs.config.base import Config
 from pathlib import Path
-from hooks.ciSystem import CiSystem, CiSystemType
+from .ciSystem import CiSystem, CiSystemType
 from shutil import copyfile
 
 class PostSetup:
