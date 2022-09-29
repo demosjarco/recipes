@@ -6,7 +6,7 @@ class CiSystemType(IntEnum):
 	GITHUB = 1
 
 class CiSystem:
-	def __init__(self) -> CiSystemType:
+	def getSystem() -> CiSystemType:
 		if (getenv('CI_SYSTEM_OVERRIDE') != None and int(getenv('CI_SYSTEM_OVERRIDE')) >= 0):
 			return CiSystemType(int(getenv('CI_SYSTEM_OVERRIDE')))
 		else:

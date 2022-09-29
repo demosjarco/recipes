@@ -1,11 +1,11 @@
 from mkdocs.config.base import Config
 from pathlib import Path
-from .ciSystem import CiSystem, CiSystemType
+from hooks.ciSystem import CiSystem, CiSystemType
 from shutil import copyfile
 
 class PostSetup:
 	def __init__(self) -> None:
-		if (CiSystem() == CiSystemType.CLOUDFLARE):
+		if (CiSystem.getSystem() == CiSystemType.CLOUDFLARE):
 			print("Cloudflare detected: running post setup", flush=True)
 			PostSetupCF()
 
