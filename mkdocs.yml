@@ -109,7 +109,7 @@ hooks:
   # CookDocs
   - hooks/cookDocsImages.py
   - hooks/lessCompiler.py
-  - hooks/postSetup.py
+  - postSetup.py
 plugins:
   - search
   - tags
