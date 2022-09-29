@@ -13,7 +13,6 @@ class Docs:
 		CookLang()
 		CookDocs()
 		# self.ciTweaks()
-		self.generate()
 	
 	def setupEnv(self) -> CiSystem:
 		if (os.getenv('CI_SYSTEM_OVERRIDE') != None and int(os.getenv('CI_SYSTEM_OVERRIDE')) >= 0):
@@ -40,15 +39,3 @@ class Docs:
 
 		with open('mkdocs.yml', 'w') as mkdocsConfigFile:
 			mkdocsConfigFile.write(self.mkdocsConfig)
-	
-	def generate(self) -> None:
-		command =['mkdocs']
-		if self.systemType == CiSystem.CLOUDFLARE:
-			command.append('build')
-		elif self.systemType == CiSystem.GITHUB:
-			command.append('gh-deploy')
-			command.append('--force')
-		
-		runDocsAttempt = subprocess.run(command, capture_output=True, check=True, text=True)
-		print(runDocsAttempt.stdout, flush=True)
-		print(runDocsAttempt.stderr, flush=True)
