@@ -12,7 +12,6 @@ class Docs:
 		# self.systemDebug()
 		CookLang()
 		CookDocs()
-		# self.ciTweaks()
 	
 	def setupEnv(self) -> CiSystem:
 		if (os.getenv('CI_SYSTEM_OVERRIDE') != None and int(os.getenv('CI_SYSTEM_OVERRIDE')) >= 0):
@@ -32,10 +31,3 @@ class Docs:
 		print('CI_SYSTEM_OVERRIDE', os.getenv('CI_SYSTEM_OVERRIDE'), flush=True)
 		print('CF_PAGES', os.getenv('CF_PAGES'), flush=True)
 		print('GITHUB_ACTIONS', os.getenv('GITHUB_ACTIONS'), flush=True)
-
-	def ciTweaks(self) -> None:
-		with open('mkdocs.yml', 'r') as mkdocsConfigFile:
-			self.mkdocsConfig = mkdocsConfigFile.read()
-
-		with open('mkdocs.yml', 'w') as mkdocsConfigFile:
-			mkdocsConfigFile.write(self.mkdocsConfig)

@@ -103,6 +103,7 @@ markdown_extensions:
 hooks:
   # Setup env
   # Setup debug
+  - hooks/configEdit.py
   # CookLang
   # CookDocs
   - hooks/cookDocsImages.py
