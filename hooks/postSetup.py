@@ -13,7 +13,7 @@ class PostSetupCF:
 	def __init__(self) -> None:
 		oldPath = Path("_headers")
 		newPath = Path(oldPath.resolve().parent.joinpath("site", oldPath.name))
-		# copyfile(oldPath, newPath)
+		copyfile(oldPath, newPath)
 		print("Moved", oldPath, "to", newPath)
 
 def on_post_build(config:Config) -> None:
