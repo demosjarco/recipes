@@ -1,16 +1,14 @@
 from mkdocs.config.base import Config
 from pathlib import Path
-import systemInfo
 from shutil import copyfile
 
 class PostSetup:
 	def __init__(self) -> None:
-		if (systemInfo.CiSystem.getSystem() == systemInfo.CiSystemType.CLOUDFLARE):
-			print("Cloudflare detected: running post setup", flush=True)
-			PostSetupCF()
+		PostSetupCF.moveHeaders()
+			
 
 class PostSetupCF:
-	def __init__(self) -> None:
+	def moveHeaders() -> None:
 		oldPath = Path("_headers")
 		newPath = Path(oldPath.resolve().parent.joinpath("site", oldPath.name))
 		copyfile(oldPath, newPath)
