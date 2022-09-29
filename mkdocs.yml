@@ -101,7 +101,6 @@ markdown_extensions:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
 hooks:
-  # Setup env
   - hooks/preSetup.py
   # Setup debug
   - hooks/configEdit.py
