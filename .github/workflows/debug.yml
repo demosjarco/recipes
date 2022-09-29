@@ -15,8 +15,8 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        fail-fast: false
         # Python 3.7 is latest supported on CF, test all versions from that to latest beta
         py: ['3.7', '3.8', '3.9', '3.10', '3.11.0-alpha - 3.11.x']
         # cook docs still build for 1.18 (https://github.com/nicholaswilde/cook-docs/blob/main/go.mod#L3), test all through latest version 
