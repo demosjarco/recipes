@@ -11,7 +11,9 @@
 			"module": "mkdocs",
 			"args": ["build", "--clean", "--strict"],
 			"cwd": "${workspaceFolder}",
-			"env": {},
+			"env": {
+				"ENABLED_SOCIAL": "false"
+			},
 			"justMyCode": true
 		}
 	]
