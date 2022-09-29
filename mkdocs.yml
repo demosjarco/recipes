@@ -127,7 +127,6 @@ plugins:
   - git-revision-date-localized:
       type: timeago
       enable_creation_date: true
-      enabled: !ENV [ENABLED_GIT_REVISION_DATE, false]
   - exclude:
       glob:
         - "icon.jpg"

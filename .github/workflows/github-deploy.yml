@@ -53,7 +53,6 @@ jobs:
         env:
             # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             ENABLED_SOCIAL: true
-            ENABLED_GIT_REVISION_DATE: true
             SITE_URL: https://demosjarco.github.io/recipes/
             RO_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=ro&hl=ro&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
             ES_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=es&hl=es&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
