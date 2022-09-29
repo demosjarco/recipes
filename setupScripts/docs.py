@@ -14,7 +14,6 @@ class Docs:
 		CookDocs()
 		# self.ciTweaks()
 		self.generate()
-		self.siteExtraConfig()
 	
 	def setupEnv(self) -> CiSystem:
 		if (os.getenv('CI_SYSTEM_OVERRIDE') != None and int(os.getenv('CI_SYSTEM_OVERRIDE')) >= 0):
@@ -53,7 +52,3 @@ class Docs:
 		runDocsAttempt = subprocess.run(command, capture_output=True, check=True, text=True)
 		print(runDocsAttempt.stdout, flush=True)
 		print(runDocsAttempt.stderr, flush=True)
-
-	def siteExtraConfig(self) -> None:
-		if self.systemType == CiSystem.CLOUDFLARE:
-			shutil.move('./_headers', './site/_headers')

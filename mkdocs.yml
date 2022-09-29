@@ -107,7 +107,7 @@ hooks:
   # CookDocs
   - hooks/cookDocsImages.py
   - hooks/lessCompiler.py
-  # siteExtraConfig
+  - hooks/postSetup.py
 plugins:
   - search
   - tags
