@@ -26,6 +26,7 @@ class YumInstall(PackageManager):
 	def installPackages(self, *packages: str, assumeYes: bool = False) -> None:
 		super().installPackages(*packages, assumeYes=assumeYes)
 		yumAttempt = system(f'sudo yum install {assumeYes == True and "-y" or ""} {" ".join(packages)}')
+		print("EXIT CODE:", yumAttempt, WEXITSTATUS(yumAttempt))
 
 class ZypperInstall(PackageManager):
 	def __init__(self) -> None:
@@ -34,6 +35,7 @@ class ZypperInstall(PackageManager):
 	def installPackages(self, *packages: str, assumeYes: bool = False) -> None:
 		super().installPackages(*packages, assumeYes=assumeYes)
 		zypperAttempt = system(f'sudo zypper install  {assumeYes == True and "-y" or ""} {" ".join(packages)}')
+		print("EXIT CODE:", zypperAttempt, WEXITSTATUS(zypperAttempt))
 
 def on_startup(command, dirty:bool):
 	if (getenv('ENABLED_SOCIAL') != None and bool(getenv('ENABLED_SOCIAL'))):
