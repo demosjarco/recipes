@@ -1,5 +1,5 @@
 from sys import platform
-from os import system, WEXITSTATUS, environ, getenv
+from os import system, WEXITSTATUS, getenv
 
 class PackageManager:
 	def __init__(self) -> None:
