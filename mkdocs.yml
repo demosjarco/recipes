@@ -101,11 +101,11 @@ markdown_extensions:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
 hooks:
-  - hooks/preSetup.py
+  # - hooks/preSetup.py
   # - hooks/debug.py
   - hooks/configEdit.py
   - hooks/cookLang.py
-  # CookDocs
+  - hooks/cookDocs.py
   - hooks/cookDocsImages.py
   - hooks/lessCompiler.py
   - hooks/postSetup.py
