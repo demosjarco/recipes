@@ -8,10 +8,19 @@ class CookDocs:
 		self.run()
 
 	def download(self) -> None:
-		pass
+		goInstallAttempt = run(["go", "install", "github.com/nicholaswilde/cook-docs/cmd/cook-docs@latest"], capture_output=True, check=True, text=True)
+		print(goInstallAttempt.stdout, flush=True)
+		print(goInstallAttempt.stderr, flush=True)
 
 	def run(self) -> None:
-		pass
+		if (getenv('GITHUB_ACTIONS') != None and bool(getenv('GITHUB_ACTIONS')) == True):
+			gopath = ''
+		elif (getenv('CF_PAGES') != None and int(getenv('CF_PAGES')) == 1):
+			gopath = '$GOPATH/bin/'
+
+		cookDocsAttempt = run([f"{gopath}cook-docs"], capture_output=True, shell=True, check=True, text=True)
+		print(cookDocsAttempt.stdout, flush=True)
+		print(cookDocsAttempt.stderr, flush=True)
 
 def on_config(config:Config) -> Config:
 	CookDocs()
