@@ -13,7 +13,7 @@ class AptInstall:
 
 	def installPackages(self, *packages:str, assumeYes:bool = False) -> None:
 		aptAttempt = system(f'{self.isSudo() == True and "" or "sudo"} apt install {assumeYes == True and "-y" or ""} {" ".join(packages)}')
-		print("Exit", WEXITSTATUS(aptAttempt))
+		print("EXIT CODE:", WEXITSTATUS(aptAttempt))
 
 def on_startup(command, dirty:bool):
 	if (getenv('ENABLED_SOCIAL') != None and bool(getenv('ENABLED_SOCIAL'))):
