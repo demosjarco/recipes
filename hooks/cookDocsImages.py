@@ -2,7 +2,6 @@ from mkdocs.structure.files import Files
 from mkdocs.config.base import Config
 from pathlib import Path
 from urllib.parse import unquote
-import os
 import re
 import shutil
 
@@ -18,17 +17,17 @@ class CookDocsImages:
 		del originalPathParts[0]
 		newPath = Path("site").joinpath("/".join(originalPathParts), "assets", "images", f"{self.standardizeName(originalFileName)}{originalPath.suffix}")
 		# Check if assets folder exists
-		if not os.path.isdir(newPath.parent):
+		if not newPath.parent.is_dir():
 			# CF
 			# drwxr-xr-x 2 buildbot nogroup    4096 Sep  4 22:48 .
 			# GH
 			# drwxr-xr-x 2 runner docker    4096 Sep  4 22:48 .
 			# 
 			# Keep base folder perms of 755
-			os.makedirs(newPath.parent, 0o755)
+			newPath.parent.mkdir(mode=0o755, parents=True)
 			print("Created", newPath.parent, flush=True)
 		# Check if image exists
-		if not os.path.isfile(newPath):
+		if not newPath.is_file():
 			shutil.copyfile(originalPath, newPath)
 			print("Moved", originalPath, "to", newPath, flush=True)
 
