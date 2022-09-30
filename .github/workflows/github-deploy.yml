@@ -49,7 +49,7 @@ jobs:
         with:
           key: ${{ github.ref }}
           path: .cache
-      - run: mkdocs gh-deploy --force --strict
+      - run: mkdocs gh-deploy --force
         env:
             # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             ENABLED_SOCIAL: true
