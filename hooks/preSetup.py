@@ -19,9 +19,6 @@ class AptInstall(PackageManager):
 		super().installPackages(packages, assumeYes=assumeYes)
 		aptAttempt = os.system(f'sudo apt install {assumeYes == True and "-y" or ""} {" ".join(packages)}')
 		print("EXIT CODE:", aptAttempt, os.WEXITSTATUS(aptAttempt))
-		if os.WEXITSTATUS(aptAttempt):
-			aptFixAttempt = os.system(f'sudo apt install {assumeYes == True and "-y" or ""} --fix-broken')
-			print("EXIT CODE:", aptFixAttempt, os.WEXITSTATUS(aptFixAttempt))
 
 class YumInstall(PackageManager):
 	def __init__(self) -> None:
