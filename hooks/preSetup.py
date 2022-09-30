@@ -1,18 +1,12 @@
 from sys import platform
-from os import system, WEXITSTATUS, environ, geteuid, getenv
+from os import system, WEXITSTATUS, environ, getenv
 
 class AptInstall:
 	def __init__(self) -> None:
-		system(f'{self.isSudo() == True and "" or "sudo"} apt update')
-
-	def isSudo(self) -> bool:
-		if not environ.get("SUDO_UID") and geteuid() != 0:
-			return False
-		else:
-			return True
+		system(f'sudo apt update')
 
 	def installPackages(self, *packages:str, assumeYes:bool = False) -> None:
-		aptAttempt = system(f'{self.isSudo() == True and "" or "sudo"} apt install {assumeYes == True and "-y" or ""} {" ".join(packages)}')
+		aptAttempt = system(f'sudo apt install {assumeYes == True and "-y" or ""} {" ".join(packages)}')
 		print("EXIT CODE:", WEXITSTATUS(aptAttempt))
 
 def on_startup(command, dirty:bool):
