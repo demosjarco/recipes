@@ -104,7 +104,7 @@ hooks:
   - hooks/preSetup.py
   # - hooks/debug.py
   - hooks/configEdit.py
-  # CookLang
+  - hooks/cookLang.py
   # CookDocs
   - hooks/cookDocsImages.py
   - hooks/lessCompiler.py
