@@ -14,7 +14,7 @@ class LessCompiler:
 		print(f"Compiled {lessFilePath} to {cssFilePath}", flush=True)
 
 # Run `on_config` because it runs before `get_files`
-def on_config(config:Config):
+def on_config(config:Config) -> Config:
 	for extraCssFilePath in config.extra_css:
 		cssFilePath = Path("recipes").joinpath(Path(extraCssFilePath))
 		lessFilePath = cssFilePath.with_suffix('.less')
