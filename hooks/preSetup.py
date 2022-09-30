@@ -1,6 +1,7 @@
 from sys import platform
 from distro import id as distroId
-from os import system, WEXITSTATUS, getenv
+# Must import full os or WEXITSTATUS crashes other systems
+import os
 
 class PackageManager:
 	def __init__(self) -> None:
@@ -12,25 +13,25 @@ class PackageManager:
 class AptInstall(PackageManager):
 	def __init__(self) -> None:
 		super().__init__()
-		system('sudo apt update')
+		os.system('sudo apt update')
 
 	def installPackages(self, *packages:str, assumeYes:bool = False) -> None:
 		super().installPackages(packages, assumeYes=assumeYes)
-		aptAttempt = system(f'sudo apt install {assumeYes == True and "-y" or ""} {" ".join(packages)}')
-		print("EXIT CODE:", aptAttempt, WEXITSTATUS(aptAttempt))
-		if WEXITSTATUS(aptAttempt):
-			aptFixAttempt = system(f'sudo apt install {assumeYes == True and "-y" or ""} --fix-broken')
-			print("EXIT CODE:", aptFixAttempt, WEXITSTATUS(aptFixAttempt))
+		aptAttempt = os.system(f'sudo apt install {assumeYes == True and "-y" or ""} {" ".join(packages)}')
+		print("EXIT CODE:", aptAttempt, os.WEXITSTATUS(aptAttempt))
+		if os.WEXITSTATUS(aptAttempt):
+			aptFixAttempt = os.system(f'sudo apt install {assumeYes == True and "-y" or ""} --fix-broken')
+			print("EXIT CODE:", aptFixAttempt, os.WEXITSTATUS(aptFixAttempt))
 
 class YumInstall(PackageManager):
 	def __init__(self) -> None:
 		super().__init__()
-		system('sudo yum check-update')
+		os.system('sudo yum check-update')
 
 	def installPackages(self, *packages: str, assumeYes: bool = False) -> None:
 		super().installPackages(*packages, assumeYes=assumeYes)
-		yumAttempt = system(f'sudo yum install {assumeYes == True and "-y" or ""} {" ".join(packages)}')
-		print("EXIT CODE:", yumAttempt, WEXITSTATUS(yumAttempt))
+		yumAttempt = os.system(f'sudo yum install {assumeYes == True and "-y" or ""} {" ".join(packages)}')
+		print("EXIT CODE:", yumAttempt, os.WEXITSTATUS(yumAttempt))
 
 class ZypperInstall(PackageManager):
 	def __init__(self) -> None:
@@ -38,11 +39,11 @@ class ZypperInstall(PackageManager):
 
 	def installPackages(self, *packages: str, assumeYes: bool = False) -> None:
 		super().installPackages(*packages, assumeYes=assumeYes)
-		zypperAttempt = system(f'sudo zypper install  {assumeYes == True and "-y" or ""} {" ".join(packages)}')
-		print("EXIT CODE:", zypperAttempt, WEXITSTATUS(zypperAttempt))
+		zypperAttempt = os.system(f'sudo zypper install  {assumeYes == True and "-y" or ""} {" ".join(packages)}')
+		print("EXIT CODE:", zypperAttempt, os.WEXITSTATUS(zypperAttempt))
 
 def on_startup(command, dirty:bool):
-	if (getenv('ENABLED_SOCIAL') != None and bool(getenv('ENABLED_SOCIAL'))):
+	if (os.getenv('ENABLED_SOCIAL') != None and bool(os.getenv('ENABLED_SOCIAL'))):
 		# MkDocs social requirement
 		if platform == "linux":
 			if distroId() == "ubuntu" or distroId() == "debian":
