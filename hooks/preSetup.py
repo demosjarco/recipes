@@ -33,7 +33,7 @@ class ZypperInstall(PackageManager):
 
 	def installPackages(self, *packages: str, assumeYes: bool = False) -> None:
 		super().installPackages(*packages, assumeYes=assumeYes)
-		yumAttempt = system(f'sudo zypper install  {assumeYes == True and "-y" or ""} {" ".join(packages)}')
+		zypperAttempt = system(f'sudo zypper install  {assumeYes == True and "-y" or ""} {" ".join(packages)}')
 
 def on_startup(command, dirty:bool):
 	if (getenv('ENABLED_SOCIAL') != None and bool(getenv('ENABLED_SOCIAL'))):
