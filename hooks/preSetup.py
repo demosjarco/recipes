@@ -3,10 +3,10 @@ from os import system, WEXITSTATUS, environ, getenv
 
 class AptInstall:
 	def __init__(self) -> None:
-		system('sudo apt update')
+		system('apt update')
 
 	def installPackages(self, *packages:str, assumeYes:bool = False) -> None:
-		aptAttempt = system(f'sudo apt install {assumeYes == True and "-y" or ""} {" ".join(packages)}')
+		aptAttempt = system(f'apt install {assumeYes == True and "-y" or ""} {" ".join(packages)}')
 		print("EXIT CODE:", aptAttempt, WEXITSTATUS(aptAttempt))
 
 def on_startup(command, dirty:bool):
