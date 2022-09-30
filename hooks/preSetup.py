@@ -1,5 +1,5 @@
 from sys import platform
-from os import system, environ, geteuid, getenv
+from os import system, WIFEXITED, WEXITSTATUS, environ, geteuid, getenv
 
 class AptInstall:
 	def __init__(self) -> None:
@@ -13,6 +13,8 @@ class AptInstall:
 
 	def installPackages(self, *packages:str, assumeYes:bool = False) -> None:
 		aptAttempt = system(f'{self.isSudo() == True and "" or "sudo"} apt install {assumeYes == True and "-y" or ""} {" ".join(packages)}')
+		if WIFEXITED(aptAttempt):
+			print("Exit", WEXITSTATUS(aptAttempt))
 
 def on_startup(command, dirty:bool):
 	if (getenv('ENABLED_SOCIAL') != None and bool(getenv('ENABLED_SOCIAL'))):
