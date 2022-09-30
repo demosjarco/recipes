@@ -12,8 +12,8 @@ class AptInstall:
 			return True
 
 	def installPackages(self, *packages:str, accept:bool = False) -> None:
-		print("RUNNING:", f'{self.isSudo() == True and "" or "sudo"} apt install {accept == True and "-y" or ""} '.join(packages))
-		system(f'{self.isSudo() == True and "" or "sudo"} apt install {accept == True and "-y" or ""} '.join(packages))
+		print("RUNNING:", f'{self.isSudo() == True and "" or "sudo"} apt install {accept == True and "-y" or ""} {packages}')
+		system(f'{self.isSudo() == True and "" or "sudo"} apt install {accept == True and "-y" or ""} {packages}')
 
 def on_startup(command, dirty:bool):
 	if (getenv('ENABLED_SOCIAL') != None and bool(getenv('ENABLED_SOCIAL'))):
