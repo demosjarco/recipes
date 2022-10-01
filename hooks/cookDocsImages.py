@@ -8,7 +8,7 @@ import shutil
 class CookDocsImages:	
 	def standardizeName(self, filename) -> str:
 		# Matching https://github.com/nicholaswilde/cook-docs/blob/main/pkg/document/template.go#L50
-		noSpaces = re.sub("\s", "-", filename)
+		noSpaces = re.sub(r"\s", "-", filename)
 		lowercase = noSpaces.lower()
 		return lowercase
 	

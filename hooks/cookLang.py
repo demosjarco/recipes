@@ -14,7 +14,7 @@ class CookLang:
 	def getDownloadLink(self) -> ParseResult:
 		ghAssets = GhApi().repos.get_latest_release('cooklang', 'CookCLI').assets
 		for ghAsset in ghAssets:
-			if re.search('CookCLI_\d+\.\d+\.\d+_linux_amd64\.zip', ghAsset.name):
+			if re.search(r'CookCLI_\d+\.\d+\.\d+_linux_amd64\.zip', ghAsset.name):
 				return urlparse(ghAsset.browser_download_url)
 
 	def download(self, downloadUrl:ParseResult) -> None:
