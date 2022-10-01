@@ -9,7 +9,7 @@
 			"type": "python",
 			"request": "launch",
 			"module": "mkdocs",
-			"args": ["build", "--clean", "--strict"],
+			"args": ["build", "--clean"],
 			"cwd": "${workspaceFolder}",
 			"env": {
 				"ENABLED_SOCIAL": "false"
