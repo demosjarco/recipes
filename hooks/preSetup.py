@@ -41,8 +41,8 @@ class ZypperInstall(PackageManager):
 		print("EXIT CODE:", zypperAttempt, os.WEXITSTATUS(zypperAttempt))
 
 def on_startup(command, dirty:bool):
+	# MkDocs social requirement
 	if (os.getenv('ENABLED_SOCIAL') != None and bool(os.getenv('ENABLED_SOCIAL'))):
-		# MkDocs social requirement
 		if platform == "linux":
 			if distroId() == "ubuntu" or distroId() == "debian":
 				AptInstall().installPackages('libcairo2-dev', 'libfreetype6-dev', 'libffi-dev', 'libjpeg-dev', 'libpng-dev', 'libz-dev', assumeYes=True)
