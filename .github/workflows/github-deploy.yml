@@ -51,7 +51,7 @@ jobs:
           path: .cache
       - run: mkdocs gh-deploy --force
         env:
-            # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             ENABLED_SOCIAL: true
             SITE_URL: https://demosjarco.github.io/recipes/
             RO_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=ro&hl=ro&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
