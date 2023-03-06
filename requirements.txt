@@ -8,7 +8,7 @@ Pillow==9.4.0
 distro==1.8.0
 mkdocs-git-revision-date-localized-plugin==1.2.0
 mkdocs-minify-plugin==0.6.2
-pymdown-extensions==9.9.2
+pymdown-extensions==9.10
 toc==0.0.11
 mkdocs-exclude==1.0.2
 mkdocs-glightbox==0.3.1
