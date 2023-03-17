@@ -35,7 +35,7 @@ jobs:
           check-latest: true
           cache: 'pip'
       - run: pip install -r requirements.txt
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v4
         id: sg
         with:
           go-version: ${{ matrix.go }}
