@@ -40,8 +40,6 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
           check-latest: true
-          # Must be disabled when no `go.sum`
-          # cache: true
       - name: MkDocs cache
         if: ${{ inputs.useMkDocsCache }}
         uses: actions/cache@v3

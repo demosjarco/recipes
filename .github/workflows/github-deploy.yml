@@ -36,8 +36,6 @@ jobs:
         with:
           go-version: 'stable'
           check-latest: true
-          # Must be disabled when no `go.sum`
-          # cache: true
       - name: MkDocs cache
         uses: actions/cache@v3
         with:
