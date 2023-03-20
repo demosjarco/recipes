@@ -11,5 +11,5 @@ mkdocs-minify-plugin==0.6.4
 pymdown-extensions==9.10
 toc==0.0.11
 mkdocs-exclude==1.0.2
-mkdocs-glightbox==0.3.1
+mkdocs-glightbox==0.3.2
 mkdocs-google-translate==1.1.2
