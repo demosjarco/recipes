@@ -4,7 +4,7 @@ ghapi==1.0.3
 requests==2.28.2
 lesscpy==0.15.1
 CairoSVG==2.7.0
-Pillow==9.4.0
+Pillow==9.5.0
 distro==1.8.0
 mkdocs-git-revision-date-localized-plugin==1.2.0
 mkdocs-minify-plugin==0.6.4
