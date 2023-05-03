@@ -1,4 +1,4 @@
-mkdocs==1.4.2
+mkdocs==1.4.3
 mkdocs-material==9.1.9
 ghapi==1.0.3
 requests==2.29.0
