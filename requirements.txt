@@ -1,6 +1,6 @@
 mkdocs==1.4.3
 mkdocs-material==9.1.15
-ghapi==1.0.3
+ghapi==1.0.4
 requests==2.31.0
 lesscpy==0.15.1
 CairoSVG==2.7.0
