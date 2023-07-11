@@ -5,14 +5,16 @@ from os import getenv
 class CookDocs:
 	def __init__(self) -> None:
 		self.download()
+		self.reshimd()
 		self.run()
 
+	def reshim(self) -> None:
+		reshim_attempt = run("asdf reshim golang", capture_output=True, shell=True, check=False, text=True)
+		print(reshim_attempt.stdout, flush=True)
+		print(reshim_attempt.stderr, flush=True)
+	
 	def download(self) -> None:
-		goInstallAttempt = run([
-			"go", "install", "github.com/nicholaswilde/cook-docs/cmd/cook-docs@latest",
-			"&&",
-			"asdf", "reshim", "golang"
-		], capture_output=True, shell=True, check=True, text=True)
+		goInstallAttempt = run(["go", "install", "github.com/nicholaswilde/cook-docs/cmd/cook-docs@latest"], capture_output=True, check=True, text=True)
 		print(goInstallAttempt.stdout, flush=True)
 		print(goInstallAttempt.stderr, flush=True)
 
