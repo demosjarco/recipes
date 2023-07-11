@@ -22,7 +22,7 @@ class CookDocs:
 		if (getenv('GITHUB_ACTIONS') != None and bool(getenv('GITHUB_ACTIONS')) == True):
 			gopath = ''
 		elif (getenv('CF_PAGES') != None and int(getenv('CF_PAGES')) == 1):
-			gopath = '$GOPATH/bin/'
+			gopath = ''
 
 		ls1 = '$GOBIN'
 		print(f"Before {ls1}")
