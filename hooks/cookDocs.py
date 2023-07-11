@@ -5,7 +5,8 @@ from os import getenv
 class CookDocs:
 	def __init__(self) -> None:
 		self.download()
-		self.reshim()
+		if (getenv('CF_PAGES') != None and int(getenv('CF_PAGES')) == 1):
+			self.reshim()
 		self.run()
 
 	def reshim(self) -> None:
