@@ -5,7 +5,7 @@ from os import getenv
 class CookDocs:
 	def __init__(self) -> None:
 		self.download()
-		self.reshimd()
+		self.reshim()
 		self.run()
 
 	def reshim(self) -> None:
