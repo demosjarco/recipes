@@ -6,7 +6,7 @@ lesscpy==0.15.1
 CairoSVG==2.7.0
 Pillow==10.0.0
 distro==1.8.0
-mkdocs-minify-plugin==0.6.4
+mkdocs-minify-plugin==0.7.0
 pymdown-extensions==10.0.1
 toc==0.0.11
 mkdocs-exclude==1.0.2
