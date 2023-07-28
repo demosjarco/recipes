@@ -4,6 +4,11 @@ site_author: DemosJarco
 repo_name: demosjarco/recipes
 repo_url: https://github.com/demosjarco/recipes
 docs_dir: recipes
+exclude_docs: |
+  icon.jpg
+  *.cook
+  *.gotmpl
+  *.less
 theme:
   name: material
   favicon: icon.png
@@ -144,12 +149,6 @@ plugins:
         - stylesheets/fullWidth.css
         - stylesheets/keepAwake.css
         - stylesheets/theme.css
-  - exclude:
-      glob:
-        - "icon.jpg"
-        - "*.cook"
-        - "*.gotmpl"
-        - "*.less"
   - glightbox
   - google-translate
   - social:
