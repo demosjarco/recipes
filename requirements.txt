@@ -7,7 +7,7 @@ CairoSVG==2.7.1
 Pillow==10.0.0
 distro==1.8.0
 mkdocs-minify-plugin==0.7.1
-pymdown-extensions==10.2
+pymdown-extensions==10.2.1
 toc==0.0.11
 mkdocs-glightbox==0.3.4
 mkdocs-google-translate==1.1.2
