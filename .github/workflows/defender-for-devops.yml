@@ -37,7 +37,7 @@ jobs:
           dotnet-version: |
             5.0.x
             6.0.x
-      - uses: microsoft/security-devops-action@e94440350ed10e2806d47cd0d7504a2c51abdbe9 # v1.6.0
+      - uses: microsoft/security-devops-action@19539f7e6ce5a7f39edd1a0cdb0ec9d92b74bcf2 # v1.7.2
         id: msdo
         env:
           GDN_RUN_AUTO: true
