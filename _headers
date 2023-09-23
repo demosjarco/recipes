@@ -4,9 +4,9 @@
   X-XSS-Protection: 1; mode=block
   X-Frame-Options: DENY
   Referrer-Policy: no-referrer
-  Permissions-Policy: document-domain=()
+  # TODO: Permissions Policy
   Expect-CT: max-age=86400, enforce
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://giscus.app https://static.cloudflareinsights.com https://recipes-demosjarco-dev.translate.goog https://vic--recipes-pages-dev.translate.goog; style-src 'self' 'unsafe-inline' https://giscus.app https://fonts.googleapis.com; img-src 'self' data: https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://github.githubassets.com https://translate.google.com; font-src https://fonts.gstatic.com; connect-src 'self' https://cloudflareinsights.com https://api.github.com; frame-src https://giscus.app; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://giscus.app https://recipes-demosjarco-dev.translate.goog https://static.cloudflareinsights.com https://vic--recipes-pages-dev.translate.goog; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://giscus.app; img-src 'self' data: https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://github.githubassets.com https://translate.google.com; font-src https://fonts.gstatic.com; connect-src 'self' https://api.github.com https://cloudflareinsights.com; frame-src https://giscus.app; upgrade-insecure-requests
   X-Permitted-Cross-Domain-Policies: none
   Cross-Origin-Resource-Policy: cross-origin
   Access-Control-Allow-Origin: https://translate.goog
