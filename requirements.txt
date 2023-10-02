@@ -1,5 +1,5 @@
 mkdocs==1.5.3
-mkdocs-material==9.4.1
+mkdocs-material==9.4.3
 ghapi==1.0.4
 requests==2.31.0
 lesscpy==0.15.1
