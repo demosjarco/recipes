@@ -48,7 +48,7 @@ jobs:
         with:
           go-version: 'stable'
           check-latest: true
-      - uses: microsoft/security-devops-action@2c1a046ac59f9f6ff05ad75d3edd5cba15b3a831 # v1.8.2
+      - uses: microsoft/security-devops-action@0a579140aedcc6cecbe177c20a92e97ffb7db707 # v1.9.1
         id: msdo
         env:
           GDN_RUN_AUTO: true
