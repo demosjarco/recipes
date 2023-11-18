@@ -25,7 +25,7 @@ jobs:
           egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - run: sudo apt update
-      - uses: awalsh128/cache-apt-pkgs-action@1850ee53f6e706525805321a3f2f863dcf73c962 # v1.3.0
+      - uses: awalsh128/cache-apt-pkgs-action@44c33b32f808cdddd5ac0366d70595ed63661ed8 # v1.3.1
         with:
           # Don't include libz-dev due to cache issue
           packages: libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev
