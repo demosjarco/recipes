@@ -61,3 +61,4 @@ jobs:
           name: lhci-${{ matrix.formFactor }}
           path: ${{ github.workspace }}/lhci-${{ matrix.formFactor }}/
           if-no-files-found: error
+          compression-level: 9

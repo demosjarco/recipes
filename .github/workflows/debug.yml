@@ -57,8 +57,10 @@ jobs:
           name: py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}_hashes.sha256
           path: '${{ github.workspace }}/py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}_hashes.sha256'
           if-no-files-found: error
+          compression-level: 9
       - uses: actions/upload-artifact@c7d193f32edcb7bfad88892161225aeda64e9392 # v4.0.0
         with:
           name: py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}
           path: ${{ github.workspace }}
           if-no-files-found: error
+          compression-level: 9

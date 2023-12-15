@@ -56,3 +56,4 @@ jobs:
           name: site
           path: ${{ github.workspace }}/site/
           if-no-files-found: error
+          compression-level: 9
