@@ -4,7 +4,7 @@ ghapi==1.0.4
 requests==2.31.0
 lesscpy==0.15.1
 mkdocs-material[imaging]==9.5.2
-distro==1.8.0
+distro==1.9.0
 mkdocs-minify-plugin==0.7.2
 pymdown-extensions==10.5
 toc==0.0.11
