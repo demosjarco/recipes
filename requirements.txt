@@ -179,9 +179,9 @@ defusedxml==0.7.1 \
     --hash=sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69 \
     --hash=sha256:a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61
     # via cairosvg
-distro==1.8.0 \
-    --hash=sha256:02e111d1dc6a50abb8eed6bf31c3e48ed8b0830d1ea2a1b78c61765c2513fdd8 \
-    --hash=sha256:99522ca3e365cac527b44bde033f64c6945d90eb9f769703caaec52b09bbd3ff
+distro==1.9.0 \
+    --hash=sha256:2fa77c6fd8940f116ee1d6b94a2f90b13b5ea8d019b98bc8bafdcabcdd9bdbed \
+    --hash=sha256:7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2
     # via -r requirements.top.txt
 fastcore==1.5.29 \
     --hash=sha256:a7d7e89faf968f2d8584df2deca344c3974f6cf476e1299cd3c067d8fa7440e9 \
@@ -211,9 +211,9 @@ jinja2==3.1.2 \
 jsmin==3.0.1 \
     --hash=sha256:c0959a121ef94542e807a674142606f7e90214a2b3d1eb17300244bbb5cc2bfc
     # via mkdocs-minify-plugin
-lesscpy==0.15.0 \
-    --hash=sha256:7f7437df153ca9221beb5425c189d1523f95f864d1400f311598527ff03248d7 \
-    --hash=sha256:ef058fb3fca077f0136222c415bc6d20fe256e92648ccbf4b3de874ba03b9b9d
+lesscpy==0.15.1 \
+    --hash=sha256:1045d17a98f688646ca758dff254e6e9c03745648e051a081b0395c3b77c824c \
+    --hash=sha256:8d26e58ed4812b345c2896daea435a28cb3182f87ae3391157085255d4c37dff
     # via -r requirements.top.txt
 markdown==3.5.1 \
     --hash=sha256:5874b47d4ee3f0b14d764324d2c94c03ea66bee56f2d929da9f2508d65e722dc \
