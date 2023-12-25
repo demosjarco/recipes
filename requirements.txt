@@ -595,8 +595,8 @@ tinycss2==1.2.1 \
     # via
     #   cairosvg
     #   cssselect2
-toc==0.0.10 \
-    --hash=sha256:dd8a24e5b15b8da61aca28013c009dc6dcf4be94e62c27a8bc559e5e0a9512b4
+toc==0.0.11 \
+    --hash=sha256:399f7113c0e4760ed85f1f1dc6faa6485dc8b850c8bdf84ba7eb3ad8cdc5b8cb
     # via -r requirements.top.txt
 urllib3==2.1.0 \
     --hash=sha256:55901e917a5896a349ff771be919f8bd99aff50b79fe58fec595eb37bbc56bb3 \
