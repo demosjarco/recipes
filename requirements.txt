@@ -302,9 +302,9 @@ mkdocs-glightbox==0.3.4 \
     --hash=sha256:8f894435b4f75231164e5d9fb023c01e922e6769e74a121e822c4914f310a41d \
     --hash=sha256:96aaf98216f83c0d0fad2e42a8d805cfa6329d6ab25b54265012ccb2154010d8
     # via -r requirements.top.txt
-mkdocs-google-translate==1.1.4 \
-    --hash=sha256:1d8ab7a478942a0d3707fbe9474cac2ae59b3277e1b4834d663ca502b498e883 \
-    --hash=sha256:b9df67f7b5498aff35fed2cd6bdce5a5ed357af7432557739186edf2829077e5
+mkdocs-google-translate==1.2.0 \
+    --hash=sha256:23cb3b7055971d53e75e8cd6a653f6207031017c1811f609c380aa0fc3de1756 \
+    --hash=sha256:b3cbeef7263be25e10b99da3fbe08c85b5206afee42cc3fc7e2b11007d6a4d8b
     # via -r requirements.top.txt
 mkdocs-material==9.3.2 \
     --hash=sha256:7b3a35a7731af02d70d120224fcec053ce09bebbf83dff3366ab72abc4d5fc89 \
