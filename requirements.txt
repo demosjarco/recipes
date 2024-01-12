@@ -2,11 +2,11 @@ distro==1.9.0
 ghapi==1.0.4
 lesscpy==0.15.1
 mkdocs==1.5.3
-mkdocs-glightbox==0.3.5
+mkdocs-glightbox==0.3.6
 mkdocs-google-translate==1.2.0
 mkdocs-material==9.5.3
 mkdocs-material[imaging]==9.5.3
 mkdocs-minify-plugin==0.7.2
-pymdown-extensions==10.5
+pymdown-extensions==10.7
 requests==2.31.0
 toc==0.0.11
