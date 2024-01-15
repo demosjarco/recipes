@@ -54,7 +54,7 @@ jobs:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
       - run: npx lhci upload --target=filesystem --outputDir=./lhci-${{ matrix.formFactor }} --githubStatusContextSuffix /${{ matrix.formFactor }}
         if: ${{ always() }}
-      - uses: actions/upload-artifact@c7d193f32edcb7bfad88892161225aeda64e9392 # v4.0.0
+      - uses: actions/upload-artifact@1eb3cb2b3e0f29609092a73eb033bb759a334595 # v4.1.0
         if: ${{ always() }}
         with:
           name: lhci-${{ matrix.formFactor }}

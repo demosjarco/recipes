@@ -51,14 +51,14 @@ jobs:
           SITE_URL: https://demosjarco.github.io/recipes/
           RO_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=ro&hl=ro&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
           ES_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=es&hl=es&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
-      - uses: actions/upload-artifact@c7d193f32edcb7bfad88892161225aeda64e9392 # v4.0.0
+      - uses: actions/upload-artifact@1eb3cb2b3e0f29609092a73eb033bb759a334595 # v4.1.0
         with:
           name: py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}
           path: ${{ github.workspace }}
           if-no-files-found: error
           compression-level: 9
       - run: find . -type f -exec sha256sum {} \; > 'py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}_hashes.sha256'
-      - uses: actions/upload-artifact@c7d193f32edcb7bfad88892161225aeda64e9392 # v4.0.0
+      - uses: actions/upload-artifact@1eb3cb2b3e0f29609092a73eb033bb759a334595 # v4.1.0
         with:
           name: py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}_hashes.sha256
           path: '${{ github.workspace }}/py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}_hashes.sha256'
