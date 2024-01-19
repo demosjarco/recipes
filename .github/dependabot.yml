@@ -5,6 +5,11 @@
 
 version: 2
 updates:
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 999
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
