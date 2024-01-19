@@ -39,7 +39,7 @@ jobs:
         with:
           go-version: 'stable'
           check-latest: true
-      - uses: actions/cache/restore@e12d46a63a90f2fae62d114769bbf2a179198b5c # v3.3.3
+      - uses: actions/cache/restore@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4.0.0
         with:
           path: .cache
           key: mkdocs-${{ hashFiles('requirements.txt') }}-${{ hashFiles('overrides/**') }}-${{ hashFiles('hooks/**') }}-${{ hashFiles('recipes/**') }}
@@ -56,7 +56,7 @@ jobs:
           SITE_URL: https://demosjarco.github.io/recipes/
           RO_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=ro&hl=ro&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
           ES_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=es&hl=es&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
-      - uses: actions/cache/save@e12d46a63a90f2fae62d114769bbf2a179198b5c # v3.3.3
+      - uses: actions/cache/save@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4.0.0
         with:
           path: .cache
           key: mkdocs-${{ hashFiles('requirements.txt') }}-${{ hashFiles('overrides/**') }}-${{ hashFiles('hooks/**') }}-${{ hashFiles('recipes/**') }}
