@@ -37,12 +37,16 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
           check-latest: true
-      - name: MkDocs cache
-        if: ${{ inputs.useMkDocsCache }}
-        uses: actions/cache@e12d46a63a90f2fae62d114769bbf2a179198b5c # v3.3.3
+      - uses: actions/cache/restore@e12d46a63a90f2fae62d114769bbf2a179198b5c # v3.3.3
         with:
-          key: ${{ github.ref }}
           path: .cache
+          key: mkdocs-${{ hashFiles('requirements.txt') }}-${{ hashFiles('overrides/**') }}-${{ hashFiles('hooks/**') }}-${{ hashFiles('recipes/**') }}
+          restore-keys: |
+            mkdocs-${{ hashFiles('requirements.txt') }}-${{ hashFiles('overrides/**') }}-${{ hashFiles('hooks/**') }}
+            mkdocs-${{ hashFiles('requirements.txt') }}-${{ hashFiles('overrides/**') }}
+            mkdocs-${{ hashFiles('requirements.txt') }}
+            mkdocs-
+          enableCrossOsArchive: true
       - run: mkdocs build
         env:
           CI_SYSTEM_OVERRIDE: 0
@@ -51,6 +55,11 @@ jobs:
           SITE_URL: https://demosjarco.github.io/recipes/
           RO_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=ro&hl=ro&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
           ES_TRANSLATE_URL: https://translate.google.com/translate?sl=en&tl=es&hl=es&u=https://demosjarco.github.io/recipes/%GT_RELATIVE_URL%
+      - uses: actions/cache/save@e12d46a63a90f2fae62d114769bbf2a179198b5c # v3.3.3
+        with:
+          path: .cache
+          key: mkdocs-${{ hashFiles('requirements.txt') }}-${{ hashFiles('overrides/**') }}-${{ hashFiles('hooks/**') }}-${{ hashFiles('recipes/**') }}
+          enableCrossOsArchive: true
       - uses: actions/upload-artifact@c7d193f32edcb7bfad88892161225aeda64e9392 # v4.0.0
         with:
           name: py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}
