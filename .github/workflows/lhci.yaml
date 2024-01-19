@@ -10,9 +10,16 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      actions: read  # for dawidd6/action-download-artifact to query and download artifacts
+      contents: read  # for actions/checkout to fetch code
+      pull-requests: read  # for dawidd6/action-download-artifact to query commit hash
     strategy:
       fail-fast: false
       matrix:
