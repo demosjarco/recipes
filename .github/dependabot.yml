@@ -19,6 +19,7 @@ updates:
       artifacts:
         patterns:
           - "actions/*-artifact"
+          - "dawidd6/action-download-artifact"
       caches:
         patterns:
           - "actions/cache"
