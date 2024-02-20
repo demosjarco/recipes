@@ -45,7 +45,7 @@ jobs:
       - run: echo "workflow_name=$(basename ${{ github.event.workflow.path }})" >> "$GITHUB_OUTPUT"
         id: last_workflow
         shell: bash
-      - uses: dawidd6/action-download-artifact@e7466d1a7587ed14867642c2ca74b5bcc1e19a2d # v3.0.0
+      - uses: dawidd6/action-download-artifact@72aaadce3bc708349fc665eee3785cbb1b6e51d0 # v3.1.1
         with:
           workflow: ${{ steps.last_workflow.outputs.workflow_name }}
       - uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8 # v4.0.1
@@ -61,7 +61,7 @@ jobs:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
       - run: npx lhci upload --target=filesystem --outputDir=./lhci-${{ matrix.formFactor }} --githubStatusContextSuffix /${{ matrix.formFactor }}
         if: ${{ always() }}
-      - uses: actions/upload-artifact@26f96dfa697d77e81fd5907df203aa23a56210a8 # v4.3.0
+      - uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
         if: ${{ always() }}
         with:
           name: lhci-${{ matrix.formFactor }}
