@@ -45,7 +45,7 @@ jobs:
       - run: echo "workflow_name=$(basename ${{ github.event.workflow.path }})" >> "$GITHUB_OUTPUT"
         id: last_workflow
         shell: bash
-      - uses: dawidd6/action-download-artifact@72aaadce3bc708349fc665eee3785cbb1b6e51d0 # v3.1.1
+      - uses: dawidd6/action-download-artifact@71072fbb1229e1317f1a8de6b04206afb461bd67 # v3.1.2
         with:
           workflow: ${{ steps.last_workflow.outputs.workflow_name }}
       - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
