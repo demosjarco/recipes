@@ -1,7 +1,7 @@
 distro==1.9.0
 ghapi==1.0.5
 lesscpy==0.15.1
-mkdocs==1.5.3
+mkdocs==1.6.0
 mkdocs-glightbox==0.3.7
 mkdocs-google-translate==1.2.0
 mkdocs-material==9.5.18
