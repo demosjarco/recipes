@@ -45,7 +45,7 @@ jobs:
           python-version: '3.x'
           check-latest: true
           cache: 'pip'
-      - uses: facebook/pyre-action@60697a7858f7cc8470d8cc494a3cf2ad6b06560d # v0.0.1
+      - uses: facebook/pyre-action@12b8d923443ea66cb657facc2e5faac1c8c86e64 # v0.0.2
         with:
           # To customize these inputs:
           # See https://github.com/facebook/pyre-action#inputs
