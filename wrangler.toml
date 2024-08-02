@@ -13,6 +13,6 @@ RO_TRANSLATE_URL = "https://translate.google.com/translate?sl=en&tl=ro&hl=ro&u=h
 [env.production.vars]
 ENABLED_SOCIAL = "true"
 ES_TRANSLATE_URL = "https://translate.google.com/translate?sl=en&tl=es&hl=es&u=https://recipes.demosjarco.dev/%GT_RELATIVE_URL%"
-GO_VERSION = "1.21"
+GO_VERSION = "1.22"
 RO_TRANSLATE_URL = "https://translate.google.com/translate?sl=en&tl=ro&hl=ro&u=https://recipes.demosjarco.dev/%GT_RELATIVE_URL%"
 SITE_URL = "https://recipes.demosjarco.dev"
