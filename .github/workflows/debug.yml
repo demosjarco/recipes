@@ -60,14 +60,14 @@ jobs:
           path: .cache
           key: mkdocs-${{ hashFiles('requirements.txt') }}-${{ hashFiles('overrides/**') }}-${{ hashFiles('hooks/**') }}-${{ hashFiles('recipes/**') }}
           enableCrossOsArchive: true
-      - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4.4.0
+      - uses: actions/upload-artifact@604373da6381bf24206979c74d06a550515601b9 # v4.4.1
         with:
           name: py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}
           path: ${{ github.workspace }}
           if-no-files-found: error
           compression-level: 9
       - run: find . -type f -exec sha256sum {} \; > 'py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}_hashes.sha256'
-      - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4.4.0
+      - uses: actions/upload-artifact@604373da6381bf24206979c74d06a550515601b9 # v4.4.1
         with:
           name: py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}_hashes.sha256
           path: '${{ github.workspace }}/py${{ steps.sp.outputs.python-version }}_go${{ steps.sg.outputs.go-version }}_hashes.sha256'
