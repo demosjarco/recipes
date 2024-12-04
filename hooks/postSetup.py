@@ -147,7 +147,7 @@ class CSPGenerator:
 		self.add_script_src(["https://cdnjs.cloudflare.com", "https://giscus.app", "https://static.cloudflareinsights.com", "https://recipes-demosjarco-dev.translate.goog", "https://vic--recipes-pages-dev.translate.goog"], False, False, True, False, True, False, True)
 		self.add_style_src(["https://giscus.app", "https://fonts.googleapis.com"], False, False, True, False, True)
 		self.add_image_src(["https://cdn.jsdelivr.net", "https://cdnjs.cloudflare.com", "https://github.githubassets.com", "https://translate.google.com"], False, False, True, True)
-		self.add_font_src(["https://fonts.gstatic.com"])
+		self.add_font_src(["https://fonts.gstatic.com"], False, False, True)
 		self.add_connect_src(["https://cloudflareinsights.com", "https://api.github.com"], False, False, True)
 		self.add_frame_src(["https://giscus.app"])
 		self.add_upgrade_insecure_requests()
