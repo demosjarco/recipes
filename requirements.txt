@@ -7,6 +7,6 @@ mkdocs-google-translate==1.2.0
 mkdocs-material==9.5.49
 mkdocs-material[imaging]==9.5.49
 mkdocs-minify-plugin==0.8.0
-pymdown-extensions==10.13
+pymdown-extensions==10.14
 requests==2.32.3
 toc==0.0.14
