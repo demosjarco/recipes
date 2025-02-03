@@ -4,8 +4,8 @@ lesscpy==0.15.1
 mkdocs==1.6.1
 mkdocs-glightbox==0.4.0
 mkdocs-google-translate==1.2.0
-mkdocs-material==9.5.50
-mkdocs-material[imaging]==9.5.50
+mkdocs-material==9.6.2
+mkdocs-material[imaging]==9.6.2
 mkdocs-minify-plugin==0.8.0
 pymdown-extensions==10.14.1
 requests==2.32.3
