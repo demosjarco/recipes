@@ -29,8 +29,9 @@ updates:
           - "github/codeql-*"
           - "actions/dependency-review-action"
           - "step-security/*"
-          - "microsoft/security-devops-action'
-          - 'microsoft/DevSkim-Action"
+          - "microsoft/security-devops-action"
+          - "microsoft/DevSkim-Action"
+          - "ossf/*"
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
