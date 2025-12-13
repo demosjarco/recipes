@@ -25,6 +25,11 @@ updates:
           - "actions/cache"
           - "actions/cache/*"
           - "awalsh128/cache-apt-pkgs-action"
+      ci-cd:
+        patterns:
+          - "changesets/*"
+          - "dependabot/*"
+          - "actions/create-github-app-token"
       sast:
         patterns:
           - "github/codeql-*"
