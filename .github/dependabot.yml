@@ -1,62 +1,72 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+# https://docs.github.com/code-security/dependabot/working-with-dependabot/dependabot-options-reference
 
 version: 2
 updates:
-  - package-ecosystem: docker
-    directory: /
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: daily
-    open-pull-requests-limit: 999
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "daily"
+      interval: 'weekly'
+    cooldown:
+      default-days: 1
     open-pull-requests-limit: 999
     groups:
       artifacts:
         patterns:
-          - "actions/*-artifact"
-          - "dawidd6/action-download-artifact"
+          - 'actions/*-artifact'
+          - 'actions/*-pages'
+          - 'dawidd6/action-download-artifact'
       caches:
         patterns:
-          - "actions/cache"
-          - "actions/cache/*"
-          - "awalsh128/cache-apt-pkgs-action"
-      ci-cd:
-        patterns:
-          - "changesets/*"
-          - "dependabot/*"
-          - "actions/create-github-app-token"
+          - 'actions/cache'
+          - 'actions/cache/*'
       sast:
         patterns:
-          - "github/codeql-*"
-          - "actions/dependency-review-action"
-          - "step-security/*"
-          - "microsoft/security-devops-action"
-          - "microsoft/DevSkim-Action"
-          - "ossf/*"
-  - package-ecosystem: "pip"
-    directory: "/"
+          - 'github/codeql-*'
+          - 'actions/dependency-review-action'
+          - 'step-security/*'
+          - 'microsoft/security-devops-action'
+          - 'microsoft/DevSkim-Action'
+          - 'ossf/*'
+      setup:
+        patterns:
+          - 'actions/checkout'
+          - 'actions/setup-*'
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "daily"
+      interval: 'weekly'
+    cooldown:
+      default-days: 1
+      semver-major-days: 30
+    versioning-strategy: increase
     open-pull-requests-limit: 999
+    ignore:
+      # Qwik 2 is a separate migration
+      - dependency-name: '@builder.io/qwik*'
+        update-types: ['version-update:semver-major']
+      # Qwik 1.x peer dependency is `vite >=5 <8`
+      - dependency-name: 'vite'
+        update-types: ['version-update:semver-major']
     groups:
-      mkdocs-core:
+      cloudflare:
         patterns:
-          - "mkdocs"
-          - "mkdocs-material"
-          - "mkdocs-material[*"
-          - "CairoSVG"
-          - "Pillow"
-      mkdocs-plugins:
+          - 'wrangler'
+      code-management:
         patterns:
-          - "pymdown-extensions"
-          - "mkdocs-*"
-          - "toc"
-          - "setuptools"
-        exclude-patterns:
-          - "mkdocs-material"
-          - "mkdocs-material*"
+          - 'prettier'
+          - 'prettier-plugin-*'
+          - '@demosjarco/prettier-config'
+      design:
+        patterns:
+          - '@tailwindcss/*'
+          - 'tailwindcss'
+          - '@fontsource/*'
+      qwik:
+        patterns:
+          - '@builder.io/qwik*'
+          - 'vite'
+          - 'rollup-plugin-*'
+      typescript:
+        patterns:
+          - 'typescript'
+          - '@types/*'

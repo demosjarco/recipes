@@ -1,0 +1,103 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/publish.yml'
+      - 'adapters/**'
+      - 'public/**'
+      - 'recipes/**'
+      - 'scripts/**'
+      - 'src/**'
+      - '*.config.*'
+      - 'tsconfig.json'
+      - 'wrangler.jsonc'
+      - 'package*.json'
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: cloudflare
+            base: /
+            origin: https://recipes.demosjarco.dev
+          - target: github
+            base: /recipes/
+            origin: https://demosjarco.github.io
+    steps:
+      - uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+        with:
+          disable-sudo-and-containers: true
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: lts/*
+          check-latest: true
+          cache: 'npm'
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+        env:
+          BASE_PATH: ${{ matrix.base }}
+          SITE_ORIGIN: ${{ matrix.origin }}
+      # Bundle chunking report (rollup-plugin-visualizer) + built site for Lighthouse
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: matrix.target == 'cloudflare'
+        with:
+          name: bundle-stats
+          path: stats.html
+          if-no-files-found: error
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: matrix.target == 'cloudflare'
+        with:
+          name: site
+          path: dist/
+          if-no-files-found: error
+      - run: echo "wrangler_version=$(npm ls wrangler --depth=0 --json | jq -r '.dependencies.wrangler.version')" >> "$GITHUB_OUTPUT"
+        if: matrix.target == 'cloudflare' && github.event_name != 'pull_request'
+        id: npm_wrangler_version
+      - uses: cloudflare/wrangler-action@ebbaa1584979971c8614a24965b4405ff95890e0 # v4.0.0
+        if: matrix.target == 'cloudflare' && github.event_name != 'pull_request'
+        with:
+          wranglerVersion: ${{ steps.npm_wrangler_version.outputs.wrangler_version }}
+          apiToken: ${{ secrets.WORKER_DEPLOY_CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        if: matrix.target == 'github' && github.event_name != 'pull_request'
+        with:
+          # Qwik nests the output under the base path
+          path: dist${{ matrix.base }}
+  github-pages:
+    needs: build
+    # Don't let a failed Cloudflare leg block GitHub Pages
+    if: ${{ !cancelled() && github.event_name != 'pull_request' }}
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+        with:
+          disable-sudo-and-containers: true
+          egress-policy: audit
+      - uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+        id: deployment
