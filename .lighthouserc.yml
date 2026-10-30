@@ -2,7 +2,7 @@ ci:
   collect:
     # The build directory where your HTML files to run Lighthouse on are located
     staticDistDir: ./site/
-    # feature: navigation.instant
+    # Qwik City client-side navigation
     isSinglePageApplication: true
     # https://github.com/GoogleChrome/lighthouse/blob/main/types/lhr/settings.d.ts#L53
     settings:
@@ -27,7 +27,7 @@ ci:
       unused-css-rules: warn
       # { loading=lazy } is used for all images in my control, but some aren't
       offscreen-images: warn
-      # navigation.instant turns into SPA which breaks back/forward cache
+      # Qwik City SPA navigation breaks back/forward cache
       bf-cache: off
       # Not testable local
       csp-xss: off

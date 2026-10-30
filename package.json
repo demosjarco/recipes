@@ -1,0 +1,41 @@
+{
+	"name": "recipes",
+	"private": true,
+	"type": "module",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/demosjarco/recipes.git"
+	},
+	"scripts": {
+		"prebuild": "node scripts/cook2mdx.ts",
+		"build": "npm run build.types && npm run build.client && npm run build.server",
+		"build.client": "vite build",
+		"build.server": "vite build --ssr -c adapters/static/vite.config.ts",
+		"build.types": "tsc --noEmit",
+		"prestart": "node scripts/cook2mdx.ts",
+		"start": "vite --open --mode ssr",
+		"preview": "wrangler dev",
+		"fmt": "prettier --check .",
+		"fmt:fix": "prettier --write ."
+	},
+	"devDependencies": {
+		"@builder.io/qwik": "1.20.3",
+		"@builder.io/qwik-city": "1.20.3",
+		"@cooklang/cooklang": "0.19.1",
+		"@demosjarco/prettier-config": "1.0.2",
+		"@fontsource/roboto": "5.3.0",
+		"@tailwindcss/vite": "4.3.3",
+		"@types/node": "26.6.5",
+		"prettier": "3.9.10",
+		"prettier-plugin-tailwindcss": "0.8.1",
+		"rollup-plugin-visualizer": "7.1.1",
+		"tailwindcss": "4.3.3",
+		"typescript": "6.0.3",
+		"vite": "7.3.7",
+		"wrangler": "4.154.0"
+	},
+	"overrides": {
+		"sharp": "0.35.5"
+	}
+}

@@ -1,0 +1,146 @@
+@import 'tailwindcss';
+@import '@fontsource/roboto/300.css';
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/700.css';
+
+/* Generated routes are gitignored so tailwind won't auto-detect them */
+@source './routes';
+
+/* `data-theme` is set on <html> before paint by the inline script in `root.tsx` */
+@custom-variant light (&:where([data-theme='light'], [data-theme='light'] *));
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+@custom-variant oled (&:where([data-theme='oled'], [data-theme='oled'] *));
+
+/* Same palette as the old mkdocs-material theme (green primary, red accent, darkgray + oled slate variants) */
+:root {
+	--bg: #fff;
+	--fg: rgb(0 0 0 / 0.87);
+	--fg-light: rgb(0 0 0 / 0.54);
+	--fg-lighter: rgb(0 0 0 / 0.32);
+	--fg-lightest: rgb(0 0 0 / 0.07);
+}
+[data-theme='dark'],
+[data-theme='oled'] {
+	--bg: hsl(232 0% 13%);
+	--fg: hsl(232 75% 95%);
+	--fg-light: hsl(232 75% 90% / 0.62);
+	--fg-lighter: hsl(232 75% 90% / 0.32);
+	--fg-lightest: hsl(232 75% 90% / 0.12);
+	color-scheme: dark;
+}
+[data-theme='oled'] {
+	--bg: #000;
+}
+
+@theme inline {
+	--font-sans: Roboto, ui-sans-serif, system-ui, sans-serif;
+	--color-primary: #4caf50;
+	--color-accent: #ff1744;
+	--color-bg: var(--bg);
+	--color-fg: var(--fg);
+	--color-fg-light: var(--fg-light);
+	--color-fg-lighter: var(--fg-lighter);
+	--color-fg-lightest: var(--fg-lightest);
+}
+
+/* Markdown (MDX) content, styled like `.md-typeset` */
+@layer components {
+	.typeset {
+		@apply text-base leading-relaxed;
+
+		& h1 {
+			@apply text-fg-light mb-10 text-[2em] leading-tight font-light tracking-tight;
+		}
+		& h2 {
+			@apply mt-10 mb-4 text-[1.5625em] leading-snug font-light tracking-tight;
+		}
+		& h3 {
+			@apply mt-8 mb-4 text-[1.25em] leading-snug font-normal tracking-tight;
+		}
+		/* rehype-autolink-headings permalink, shown on hover like mkdocs `#` */
+		& :is(h1, h2, h3) > a[aria-hidden] {
+			@apply hidden;
+		}
+		& :is(h1, h2, h3)[id] {
+			@apply scroll-mt-16;
+		}
+		& p,
+		& ul {
+			@apply my-4;
+		}
+		& a {
+			@apply text-primary hover:text-accent;
+		}
+		& img {
+			@apply my-4 h-auto max-w-full;
+		}
+		& table {
+			@apply border-fg-lightest my-4 inline-block max-w-full overflow-auto rounded-sm border text-[0.8rem];
+		}
+		& th {
+			@apply px-5 py-3 font-bold;
+		}
+		& td {
+			@apply border-fg-lightest border-t px-5 py-3;
+		}
+
+		/* CSS-only tabs: radios + labels, then one list per radio */
+		& .tabs {
+			@apply my-4 flex flex-wrap;
+
+			& > input {
+				@apply sr-only;
+			}
+			& > label {
+				@apply text-fg-light hover:text-accent cursor-pointer border-b-2 border-transparent px-5 py-2.5 text-[0.8rem] font-bold;
+			}
+			& > input:checked + label {
+				@apply text-fg border-current;
+			}
+			& > ul {
+				@apply border-fg-lightest hidden w-full border-t pt-2;
+			}
+			& > input:nth-of-type(1):checked ~ ul:nth-of-type(1),
+			& > input:nth-of-type(2):checked ~ ul:nth-of-type(2) {
+				@apply block;
+			}
+			& li {
+				@apply my-2 list-none;
+			}
+			& label:has(input[type='checkbox']) {
+				@apply flex cursor-pointer items-center gap-2;
+			}
+			/* Round check indicator like pymdownx.tasklist custom_checkbox */
+			& input[type='checkbox'] {
+				@apply bg-fg-lightest size-5 shrink-0 cursor-pointer appearance-none rounded-full bg-center bg-no-repeat checked:bg-[#00e676];
+				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+				background-size: 70%;
+			}
+		}
+
+		/* Admonitions */
+		& .note,
+		& .quote {
+			@apply my-5 overflow-hidden rounded-sm border-l-4 text-[0.8rem] shadow;
+
+			& > :not(summary) {
+				@apply mx-3;
+			}
+		}
+		& .note {
+			@apply border-[#448aff];
+
+			&::before {
+				@apply block bg-[#448aff]/10 px-3 py-2 font-bold;
+				content: '✏️ Note';
+			}
+		}
+		& .quote {
+			@apply border-[#9e9e9e];
+
+			& summary {
+				@apply cursor-pointer bg-[#9e9e9e]/10 px-3 py-2 font-bold;
+			}
+		}
+	}
+}

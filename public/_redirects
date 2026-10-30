@@ -1,0 +1,2 @@
+# Nested folders are slugged now (mkdocs kept the spaces)
+/Desserts/Cinnamon%20Rolls/* /Desserts/cinnamon-rolls/:splat 301
